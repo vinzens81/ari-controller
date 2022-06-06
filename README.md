@@ -31,7 +31,7 @@ so far the ARI-controller is only able to answer a channel and playback a soundf
 all the relevant logic is implemented at package com.aricontroller.control.controller
 This is plain java without any Akka specifics.
  
-The ARI-controller is an [akka based actor system](https://doc.akka.io/docs/akka/current/typed/actors.html). There is an Actor for each call. There is no possibility to leak information between those calls. The Calls are represented by the "Routing Key". The routing key is dictated by the ARI-proxy and is used as the routing Key for kafka as well. If there are more than one Retel-Controller instances running, all messaged for a routing key is routed to the same controller instance.
+The ARI-controller is an [akka based actor system](https://doc.akka.io/docs/akka/current/typed/actors.html). There is an Actor for each call. There is no possibility to leak information between those calls. The Calls are represented by the "Routing Key". The routing key is dictated by the ARI-proxy and is used as the routing Key for kafka as well. If there are more than one ARI-Controller instances running, all messaged for a routing key is routed to the same controller instance.
 
 In case the ARI-controller created new resources within the asterisk (e.g. a Playback) the ARI-Proxy will store the Playback ID - Routing key pair and all future ARI Events are routed accordingly.
 

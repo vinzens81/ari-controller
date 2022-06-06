@@ -8,7 +8,7 @@ Currently, the controller will start a playback but nothing else.
 
 ## Setup
 in order to bring up the showcase there is a docker-compose file starting the entire needed environment.  
-The setup is quite complex. There is a Kafka setup as well as a persistent backend in pace to transport messages from ARI Proxy to Retel-Controller.
+The setup is quite complex. There is a Kafka setup as well as a persistent backend in pace to transport messages from ARI Proxy to ARI-Controller.
 How this works is presented in a [Asterisk Astricon Talk](https://www.youtube.com/watch?v=vMCyuItMYxE).
 
 ### Startup
@@ -27,15 +27,15 @@ After register the client you can call `1234` Which playback the `tt-monkeys` ri
 to shut down the Environment just change to folder `environment-seup` and type `docker-compose down`.
 
 ## Call logic
-so far the retel-controller is only able to answer a channel and playback a soundfile. 
+so far the ARI-controller is only able to answer a channel and playback a soundfile. 
 all the relevant logic is implemented at package com.aricontroller.control.controller
 This is plain java without any Akka specifics.
  
-The retel-controller is an [akka based actor system](https://doc.akka.io/docs/akka/current/typed/actors.html). There is an Actor for each call. There is no possibility to leak information between those calls. The Calls are represented by the "Routing Key". The routing key is dictated by the ARI-proxy and is used as the routing Key for kafka as well. If there are more than one Retel-Controller instances running, all messaged for a routing key is routed to the same controller instance.
+The ARI-controller is an [akka based actor system](https://doc.akka.io/docs/akka/current/typed/actors.html). There is an Actor for each call. There is no possibility to leak information between those calls. The Calls are represented by the "Routing Key". The routing key is dictated by the ARI-proxy and is used as the routing Key for kafka as well. If there are more than one Retel-Controller instances running, all messaged for a routing key is routed to the same controller instance.
 
-In case the retel-controller created new resources within the asterisk (e.g. a Playback) the ARI-Proxy will store the Playback ID - Routing key pair and all future ARI Events are routed accordingly.
+In case the ARI-controller created new resources within the asterisk (e.g. a Playback) the ARI-Proxy will store the Playback ID - Routing key pair and all future ARI Events are routed accordingly.
 
-If the retel-controller should be High Available, you need to replace the persistent backend with something else than "in-Mem". For production cassandra could be an Option. Please refer to the Akka Documentation for it.
+If the ARI-controller should be High Available, you need to replace the persistent backend with something else than "in-Mem". For production cassandra could be an Option. Please refer to the Akka Documentation for it.
 
 ### Useful commands
 

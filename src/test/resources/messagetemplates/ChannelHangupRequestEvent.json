@@ -1,0 +1,48 @@
+{
+  "type": "CHANNEL_HANGUP_REQUEST",
+  "commandsTopic": "#COMMANDS_TOPIC#",
+  "payload": {
+    "cause": 16,
+    "type": "ChannelHangupRequest",
+    "timestamp": "2021-07-28T03:00:16.158+0200",
+    "channel": {
+      "id": "#CHANNEL_END_ID#",
+      "name": "Local/4920387836591@retel-000001ba;2",
+      "state": "Up",
+      "caller": {
+        "name": "020387836468",
+        "number": "020387836468"
+      },
+      "connected": {
+        "name": "",
+        "number": "4920387836591"
+      },
+      "accountcode": "sipgate20-sipgate20-i-sip",
+      "dialplan": {
+        "context": "retel",
+        "exten": "4920387836591",
+        "priority": 2,
+        "app_name": "Stasis",
+        "app_data": "retel"
+      },
+      "creationtime": "2021-07-28T03:00:04.407+0200",
+      "language": "en",
+      "channelvars": {
+        "ASTERISK_HOSTNAME": "theAsteriskHostname",
+        "TARGET": "+4920387836591",
+        "CALL_CONTEXT": "#ROUTING_KEY#"
+      }
+    },
+    "asterisk_id": "00:00:00:00:00:03",
+    "application": "retel"
+  },
+  "callContext": "#ROUTING_KEY#",
+  "resources": [
+    {
+      "type": "CHANNEL",
+      "id": "#CHANNEL_END_ID#"
+    }
+  ],
+  "commandId": null,
+  "commandRequest": null
+}

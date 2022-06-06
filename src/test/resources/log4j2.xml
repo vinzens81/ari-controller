@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+    <Appenders>
+        <Console name="StdOut" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>%highlight{%d{ISO8601_OFFSET_DATE_TIME_HH} [%5p] %logger{1.} - %msg%n%throwable}</Pattern>
+            </PatternLayout>
+        </Console>
+        <Async name="AsyncStdOut">
+            <AppenderRef ref="StdOut" level="DEBUG"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="AsyncStdOut"/>
+        </Root>
+        <Logger name="org.apache.kafka" level="WARN"/>
+        <Logger name="io.confluent.kafka" level="WARN"/>
+        <Logger name="akka" level="WARN"/>
+        <Logger name="org.testcontainers" level="WARN"/>
+        <Logger name="com.github.dockerjava" level="WARN"/>
+    </Loggers>
+</Configuration>

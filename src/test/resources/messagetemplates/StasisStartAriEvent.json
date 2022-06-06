@@ -1,0 +1,37 @@
+{
+  "type": "STASIS_START",
+  "commandsTopic": "#COMMANDS_TOPIC#",
+  "payload": {
+    "type": "StasisStart",
+    "timestamp": "2022-12-24T15:16:17.123+0200",
+    "args": [],
+    "channel": {
+      "id": "#CHANNEL_ID#",
+      "name": "#CHANNEL_NAME#",
+      "state": "Ring",
+      "caller": {
+        "name": "sipp",
+        "number": "acme-development"
+      },
+      "connected": {
+        "name": "",
+        "number": ""
+      },
+      "accountcode": "",
+      "dialplan": {
+        "context": "acme",
+        "exten": "12345",
+        "priority": 2,
+        "app_name": "Stasis",
+        "app_data": "acme"
+      },
+      "creationtime": "2022-12-24T15:16:17.123+0200",
+      "language": "en",
+      "channelvars": {}
+    },
+    "asterisk_id": "02:42:ac:14:00:08",
+    "application": "acme"
+  },
+  "callContext": "#ROUTING_KEY#",
+  "commandId": null
+}

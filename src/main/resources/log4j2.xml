@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+<Appenders>
+    <Console name="STDOUT" target="SYSTEM_OUT">
+        <PatternLayout>
+            <Pattern>%highlight{%d{ISO8601_OFFSET_DATE_TIME_HH} [%5p] {%36marker} %28c{1} - %msg%n%throwable}</Pattern>
+        </PatternLayout>
+    </Console>
+    <Console name="STDOUTAkka" target="SYSTEM_OUT">
+        <PatternLayout>
+            <Pattern>%highlight{%d{ISO8601_OFFSET_DATE_TIME_HH} [%5p] {%36marker} %28c{1} - %msg%n%throwable}</Pattern>
+        </PatternLayout>
+    </Console>
+    <Console name="STDOUTKafka" target="SYSTEM_OUT">
+        <PatternLayout>
+            <Pattern>%highlight{%d{ISO8601_OFFSET_DATE_TIME_HH} [%5p] {%36marker} %28c{1} - %msg%n%throwable}</Pattern>
+        </PatternLayout>
+    </Console>
+    <Console name="STDOUTCassandra" target="SYSTEM_OUT">
+        <PatternLayout>
+            <Pattern>%highlight{%d{ISO8601_OFFSET_DATE_TIME_HH} [%5p] {%36marker} %28c{1} - %msg%n%throwable}</Pattern>
+        </PatternLayout>
+    </Console>
+
+    <Async name="Async">
+        <AppenderRef ref="STDOUT" level="DEBUG"/>
+    </Async>
+    <Async name="AsyncAkka">
+        <AppenderRef ref="STDOUTAkka" level="DEBUG"/>
+    </Async>
+    <Async name="AsyncKafka">
+        <AppenderRef ref="STDOUTKafka" level="DEBUG"/>
+    </Async>
+    <Async name="AsyncCassandra">
+        <AppenderRef ref="STDOUTCassandra" level="DEBUG"/>
+    </Async>
+</Appenders>
+<Loggers>
+    <Logger name="org.apache.kafka" level="OFF" additivity="false">
+        <AppenderRef ref="AsyncKafka"/>
+    </Logger>
+    <Logger name="org.apache.kafka.clients.consumer.ConsumerConfig" level="WARN" additivity="false">
+        <AppenderRef ref="AsyncKafka"/>
+    </Logger>
+    <Logger name="io.confluent.kafka.serializers" level="WARN" additivity="false">
+        <AppenderRef ref="AsyncKafka"/>
+    </Logger>
+    <Logger name="org.apache.kafka.clients.producer.ProducerConfig" level="WARN" additivity="false">
+        <AppenderRef ref="AsyncKafka"/>
+    </Logger>
+    <Logger name="com.datastax.oss.driver" level="OFF" additivity="false">
+        <AppenderRef ref="AsyncCassandra"/>
+    </Logger>
+    <Logger name="io.netty" level="OFF" additivity="false">
+        <AppenderRef ref="AsyncCassandra"/>
+    </Logger>
+    <Logger name="akka" level="OFF" additivity="false">
+        <AppenderRef ref="AsyncAkka"/>
+    </Logger>
+    <Root level="DEBUG">
+        <AppenderRef ref="Async"/>
+    </Root>
+</Loggers>
+</Configuration>

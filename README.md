@@ -59,5 +59,5 @@ I will not accept PR for this project. If you find an issue, please tell me, so 
 You can use this code as a basis, but I highly recommend not to do so, without mayor changes for. 
 
 # Thanks
-Special thanks are going to [sipgate](sipgate.de). sipgate is using a similar project in production and a lot of code is used in here.
+Special thanks are going to [sipgate](https://www.sipgate.de). sipgate is using a similar project in production and a lot of code is used in here.
 As well as the entire Setup to connect Asterisk with Kafka is done by sipgate.
